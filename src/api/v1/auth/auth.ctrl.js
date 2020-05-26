@@ -65,7 +65,7 @@ exports.postRegister = async (ctx) => {
             }
         });
 
-        if (body.id == null || body.pw == null || body.name == null) {
+        if (body.id == null || body.pw == null || body.name == null || body.email == null) {
             ctx.status = 400;
             ctx.body = {
                 status: 400,
@@ -85,7 +85,8 @@ exports.postRegister = async (ctx) => {
         model.user.create({
             id: body.id,
             pw: sha256(body.pw + salt),
-            name: body.name
+            name: body.name,
+            email: body.email
         });
 
         ctx.status = 200;
@@ -94,7 +95,8 @@ exports.postRegister = async (ctx) => {
             message: '회원가입 성공!',
             data: {
                 id: body.id,
-                name: body.name
+                name: body.name,
+                email: body.email
             }
         }
 
