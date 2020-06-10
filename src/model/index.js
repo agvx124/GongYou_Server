@@ -36,11 +36,53 @@ const user = sequelize.define("user", {
     timestamps: false,
 });
 
+const fileInfo = sequelize.define("file_info", {
+    idx: {
+        field: 'idx',
+        type: Sequelize.DataTypes.INTEGER(10),
+        autoIncrement: true,
+        primaryKey: true
+    },
+    fileEigenValue: {
+        field: 'file_eigen_value',
+        type: Sequelize.DataTypes.INTEGER(20),
+        allowNull: false
+    },
+    senderId: {
+        field: 'sender_id',
+        type: Sequelize.DataTypes.STRING(20),
+        allowNull: false
+    },
+    filesUrl: {
+        field: 'files_url',
+        type: Sequelize.DataTypes.STRING(100),
+        allowNull: false
+    },
+    fileExt: {
+        field: 'file_ext',
+        type: Sequelize.DataTypes.STRING(10),
+        allowNull: false
+    },
+    fileNumbered: {
+        field: 'file_numbered',
+        type: Sequelize.DataTypes.INTEGER(5),
+        allowNull: false
+    }
+}, {
+    timestamps: false,
+});
+
 user.sync();
+fileInfo.sync();
+
 // const result = user.findAll({  });
 
 module.exports = {
     getUser: () => {
         return user.findAll();
-    },user
+    },user,
+
+    getFileInfo: () => {
+        return fileInfo.findAll();
+    },fileInfo
 }
