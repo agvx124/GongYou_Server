@@ -24,18 +24,17 @@ exports.urlUpload = async (ctx) => {
 
         ctx.status = 200;
         ctx.body = {
-            data: {
-                status: 200,
-                message: "파일이 성공적으로 업로드 되었습니다.",
-                data : {
-                    idx: relevant.idx,
-                    fileEigenValue: body.fileEigenValue,
-                    senderId: body.id,
-                    filesUrl: body.filesUrl,
-                    fileExt: body.fileExt,
-                    fileNumbered: body.fileNum
-                }
+            status: 200,
+            message: "파일이 성공적으로 업로드 되었습니다.",
+            data : {
+                idx: relevant.idx,
+                fileEigenValue: body.fileEigenValue,
+                senderId: body.id,
+                filesUrl: body.filesUrl,
+                fileExt: body.fileExt,
+                fileNumbered: body.fileNum
             }
+            
         }
     } catch (ex) {
         ctx.status = 500;
